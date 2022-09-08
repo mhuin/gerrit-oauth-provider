@@ -36,7 +36,12 @@ following:
 
 ```
   git clone https://gerrit.googlesource.com/plugins/oauth gerrit-oauth-provider
-  cd gerrit-oauth-provider && bazel build gerrit-oauth-provider
+  nix-shell -p bazel_4 jdk11
+  cd gerrit-oauth-provider
+  echo "4.2.2" > .bazelversion
+   bazel build gerrit-oauth-provider
+  find ~/.cache/bazel/ -name "gerrit-oauth-provider.jar"
+
 ```
 
 Install
